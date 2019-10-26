@@ -34,9 +34,8 @@ body["ResetType"] = "ForceRestart"
 # Generate POST Path
 # path = iLO_https_url + "/redfish/v1/Systems/" + system + "/Actions/ComputerSystem.Reset/"
 path = "/redfish/v1/Systems/" + system + "/Actions/ComputerSystem.Reset/"
-print(path)
 
 # POST
-# response = rf.redfish_post(path, body)
-# rf.error_handler(response)
+response = rf.redfish_post(path, body)
+rf.error_handler(response)
 
