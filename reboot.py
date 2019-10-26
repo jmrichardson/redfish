@@ -6,7 +6,7 @@ Options:
   -s system         System number [default: 1]
   -a account        ILO account
   -p password       ILO password
-  -u iLO_https_url  ILO HTTPS URL
+  -u iLO_https_url  ILO HTTPS URL (ie. https://X.X.X.X)
 """
 from docopt import docopt
 arguments = docopt(__doc__)

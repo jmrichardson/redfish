@@ -1,11 +1,11 @@
 """Usage: assets.py [-a account] [-p password] [-u iLO_https_url]
 
-Reboot host
+Show asset inventory
 
 Options:
   -a account        ILO account
   -p password       ILO password
-  -u iLO_https_url  ILO HTTPS URL
+  -u iLO_https_url  ILO HTTPS URL (ie. https://X.X.X.X)
 """
 from docopt import docopt
 arguments = docopt(__doc__)
