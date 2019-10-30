@@ -9,3 +9,7 @@
 	cd redfish
 	pip install -r requirements.txt
 
+### Update config.py
+    
+    Assign default parameters
+
