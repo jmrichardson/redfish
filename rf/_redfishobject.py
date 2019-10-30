@@ -75,7 +75,7 @@ import redfish.ris.tpdefs
 from redfish import AuthMethod, redfish_logger, redfish_client
 
 #Config logger used by HPE Restful library
-LOGGERFILE = "RedfishApiExamples.log"
+LOGGERFILE = "logs/RedfishApiExamples.log"
 LOGGERFORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 LOGGER = redfish_logger(LOGGERFILE, LOGGERFORMAT, logging.INFO)
 LOGGER.info("HPE Redfish API examples")

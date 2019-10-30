@@ -24,7 +24,7 @@ else:
     system = "1"
 
 # Init redfish object
-from rf import rf
+from rf.rf import rf
 
 # POST body
 body = dict()
@@ -32,7 +32,6 @@ body["Action"] = "ComputerSystem.Reset"
 body["ResetType"] = "ForceRestart"
 
 # Generate POST Path
-# path = iLO_https_url + "/redfish/v1/Systems/" + system + "/Actions/ComputerSystem.Reset/"
 path = "/redfish/v1/Systems/" + system + "/Actions/ComputerSystem.Reset/"
 
 # POST

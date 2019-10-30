@@ -18,7 +18,7 @@ except Exception as excp:
 
 
 # Helper function to traverse API
-def drill(path, keys, indent=0):
+def drill(path, keys, indent=0, output=True):
     urls = ['/']
     terms = path.split('*')[:-1]
     if len(terms):
@@ -35,6 +35,7 @@ def drill(path, keys, indent=0):
             urls = new_urls
     else:
         urls = [path]
+    result = {}
     for url in urls:
         res = rf.redfish_get(url)
         for key in keys:
@@ -44,8 +45,14 @@ def drill(path, keys, indent=0):
                 dres = dpath.util.get(res.dict, key)
             if isinstance(dres, list):
                 for idx in dres:
-                    print(" " * indent + f"{'/'.join(map(str, key))}: {dpath.util.get(idx, key[1])}")
+                    value = dpath.util.get(idx, key[1])
+                    if isinstance(key, list): k = '/'.join(map(str, key))
+                    result[k] = value
+                    if output: print(" " * indent + f"{k}: {value}")
             else:
-                print(" "*indent + f"{key}: {dres}")
+                result[key] = {dres}
+                if output: print(" "*indent + f"{key}: {dres}")
+
+    return result
 
 
