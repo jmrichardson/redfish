@@ -16,5 +16,6 @@
 
 ### Sample
 
+    cd ..
     python assets.py
 
