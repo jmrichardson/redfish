@@ -1,6 +1,6 @@
 """Usage: monitor.py [-a account] [-p password] [-u iLO_https_url]
 
-Reboot host
+Monitor host
 
 Options:
   -a account                ILO account
