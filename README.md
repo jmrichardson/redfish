@@ -10,5 +10,11 @@
 
 ### Update config.py
     
-    Assign default parameters
+    cd rf
+    vi config.py
+        iLO_https_url = "https://x.x.x.x" 
+
+### Sample
+
+    python assets.py
 
