@@ -19,3 +19,8 @@
     cd ..
     python assets.py
 
+### Note
+
+The example code utilizes a helper function "drill" to recursively traverse the API tree.  This significantly reduces the amount of boiler plate code and complexity required to find the required the appropriate API endpoint.  However, HPE provides [examples](https://github.com/HewlettPackard/python-ilorest-library) that can be used instead of the helper function.  
+
+

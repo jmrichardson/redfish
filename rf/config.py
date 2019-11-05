@@ -1,5 +1,5 @@
 # Set default variables
-iLO_https_url = "https://x.x.x.x
+iLO_https_url = "https://x.x.x.x"
 iLO_account = "admin"
 iLO_password = "admin"
 
