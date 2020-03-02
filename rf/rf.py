@@ -40,7 +40,7 @@ def drill(path, keys, indent=0, output=True):
             else:
                 for i in urls:
                     uri = i + url
-                    res = rf.redfish_get(uri)
+                    res = rf.get(uri)
                     dres = dpath.util.get(res.dict, od)
                     if isinstance(dres, dict):
                         dres = [dres]
@@ -52,7 +52,7 @@ def drill(path, keys, indent=0, output=True):
     result = {}
     # print(urls)
     for url in urls:
-        res = rf.redfish_get(url)
+        res = rf.get(url)
         for key in keys:
             if isinstance(key, list):
                 dres = dpath.util.get(res.dict, key[0])

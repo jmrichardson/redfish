@@ -1,40 +1,31 @@
-"""Usage: monitor.py [-a account] [-p password] [-u iLO_https_url]
-
-Monitor host
-
-Options:
-  -a account                ILO account
-  -p password               ILO password
-  -u iLO_https_url          ILO HTTPS URL (ie. https://X.X.X.X)
-"""
-from docopt import docopt
-arguments = docopt(__doc__)
-
-# Get default configuration
 from rf import config
-
-# Set config args if provided
-if 'arguments' in locals():
-    if arguments['-u']: config.iLO_https_url = arguments['-u']
-    if arguments['-p']: config.iLO_password = arguments['-p']
-    if arguments['-a']: config.iLO_account = arguments['-a']
-
-
-# Init redfish object
 from rf.rf import drill
 import sys
 from loguru import logger
 from time import sleep
 
+# Monitor
+monitor_log = 'logs/monitor.log'
+monitor_frequency = 5
+monitor = {
+  '/redfish/v1/Systems/*Members*': [
+    'Oem/Hpe/SystemUsage/CPUUtil',
+    'Oem/Hpe/SystemUsage/MemoryBusUtil'
+    ],
+  '/redfish/v1/Chassis/*Members*': [
+    'Status/Health'
+  ]
+}
+
 logger.remove()
 logger.add(sys.stdout, format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | {message}")
-logger.add(config.monitor_log, format="{time:YYYY-MM-DD HH:mm:ss} | {message}")
+logger.add(monitor_log, format="{time:YYYY-MM-DD HH:mm:ss} | {message}")
 
 while True:
-    for key, value in config.monitor.items():
+    for key, value in monitor.items():
         result = drill(key, value, output=False)
         for k, v in result.items():
             logger.info(f"{k}, {v}")
-    sleep(config.monitor_frequency)
+    sleep(monitor_frequency)
 
 
