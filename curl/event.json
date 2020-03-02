@@ -1,0 +1,20 @@
+{
+   "Destination":"https://myeventreciever/eventreceiver",
+   "EventTypes":[
+      "ResourceAdded",
+      "ResourceRemoved",
+      "ResourceUpdated",
+      "StatusChange",
+      "Alert"
+   ],
+   "HttpHeaders":{
+      "Header":"HeaderValue"
+   },
+   "Oem": {
+        "Hpe": {
+		"TTLCountDefault": 999999,
+		"TTLUnitsDefault": "minutes"
+        }
+    },
+   "Context":"context string"
+}

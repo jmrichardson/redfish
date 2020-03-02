@@ -1,6 +1,10 @@
+import os
+import json
 from rf.config import *
-from rf._redfishobject import RedfishObject
-from redfish.rest.v1 import ServerDownOrUnreachableError
+import redfish
+# from rf._redfishobject import RedfishObject
+# from redfish import RedfishClient
+# from redfish.rest.v1 import ServerDownOrUnreachableError
 import dpath.util
 
 # Set configuration variables
@@ -10,7 +14,9 @@ iLO_password = iLO_password
 
 # Create a REDFISH object
 try:
-    rf = RedfishObject(iLO_https_url, iLO_account, iLO_password)
+    rf = redfish.RedfishClient(base_url=iLO_https_url, username=iLO_account, password=iLO_password)
+    rf.login()
+
 except ServerDownOrUnreachableError as excp:
     raise Exception("ERROR: server not reachable or doesn't support RedFish.\n")
 except Exception as excp:
@@ -63,5 +69,36 @@ def drill(path, keys, indent=0, output=True):
                 if output: print(" "*indent + f"{key}: {dres}")
 
     return result
+
+
+def update(rf, update_repo, update_target, firmware):
+
+    update_service_uri = rf.root.obj['UpdateService']['@odata.id']
+    update_service_response = rf.get(update_service_uri)
+    path = update_service_response.obj.HttpPushUri
+
+    body = []
+    json_data = {'UpdateRepository': update_repo, 'UpdateTarget': update_target, 'ETag': 'atag', 'Section': 0}
+    session_key = rf.session_key
+
+    filename = os.path.basename(firmware)
+    with open(firmware, 'rb') as fle:
+        output = fle.read()
+
+    session_tuple = ('sessionKey', session_key)
+    parameters_tuple = ('parameters', json.dumps(json_data))
+    file_tuple = ('file', (filename, output, 'application/octet-stream'))
+
+    # Build the payload from each multipart-form data tuple
+    body.append(session_tuple)
+    body.append(parameters_tuple)
+    body.append(file_tuple)
+
+    header = {'Cookie': 'sessionKey=' + session_key}
+
+    print("Processing ...")
+    resp = rf.post(path, body, headers=header)
+    print("Done.")
+    return resp
 
 
