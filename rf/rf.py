@@ -24,7 +24,7 @@ except Exception as excp:
 
 
 # Helper function to traverse API
-def drill(path, keys, indent=0, output=True):
+def drill(path, keys, indent=2, output=True):
     urls = ['/']
     terms = path.split('*')
     if terms[-1] == '':
@@ -52,6 +52,7 @@ def drill(path, keys, indent=0, output=True):
     result = {}
     # print(urls)
     for url in urls:
+        print('\n' + url)
         res = rf.get(url)
         for key in keys:
             if isinstance(key, list):
@@ -69,36 +70,4 @@ def drill(path, keys, indent=0, output=True):
                 if output: print(" "*indent + f"{key}: {dres}")
 
     return result
-
-
-def update(rf, update_repo, update_target, firmware):
-
-    update_service_uri = rf.root.obj['UpdateService']['@odata.id']
-    update_service_response = rf.get(update_service_uri)
-    path = update_service_response.obj.HttpPushUri
-
-    body = []
-    json_data = {'UpdateRepository': update_repo, 'UpdateTarget': update_target, 'ETag': 'atag', 'Section': 0}
-    session_key = rf.session_key
-
-    filename = os.path.basename(firmware)
-    with open(firmware, 'rb') as fle:
-        output = fle.read()
-
-    session_tuple = ('sessionKey', session_key)
-    parameters_tuple = ('parameters', json.dumps(json_data))
-    file_tuple = ('file', (filename, output, 'application/octet-stream'))
-
-    # Build the payload from each multipart-form data tuple
-    body.append(session_tuple)
-    body.append(parameters_tuple)
-    body.append(file_tuple)
-
-    header = {'Cookie': 'sessionKey=' + session_key}
-
-    print("Processing ...")
-    resp = rf.post(path, body, headers=header)
-    print("Done.")
-    return resp
-
 

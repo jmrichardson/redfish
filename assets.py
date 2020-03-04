@@ -36,14 +36,14 @@ drill('/redfish/v1/Systems/*Members*', [
     'ProcessorSummary/Model',
     'Oem/Hpe/SystemUsage/CPUUtil'
     ])
-print("Ethernet Interfaces:")
+print("\nEthernet Interfaces:")
 drill('/redfish/v1/Systems/*Members*/*EthernetInterfaces*/*Members*', [
     'Name',
     ['IPv4Addresses', 'Address'],
     'MACAddress',
     'SpeedMbps'
-], indent=2)
-print("Storage:")
+])
+print("\nStorage:")
 drill('/redfish/v1/Chassis/*Members*/*Links/Drives*', [
     'MediaType',
     ['Location', 'Info'],
@@ -51,12 +51,12 @@ drill('/redfish/v1/Chassis/*Members*/*Links/Drives*', [
     'Model',
     'PredictedMediaLifeLeftPercent',
     'SerialNumber'
-    ], indent=2)
-print("Network Adapters:")
-drill('/redfish/v1/Chassis/*Members*/*NetworkAdapters*/*Members*', ['Model'], indent=2)
-print("Power:")
+    ])
+print("\nNetwork Adapters:")
+drill('/redfish/v1/Chassis/*Members*/*NetworkAdapters*/*Members*', ['Model'])
+print("\nPower:")
 drill('/redfish/v1/Chassis/*Members*/*Power*', [
     ['PowerSupplies', 'Model'],
-], indent=2)
+])
 
 
