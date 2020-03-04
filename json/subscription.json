@@ -1,0 +1,23 @@
+{
+   "Destination": "https://16.214.192.48/RedfishEvents",
+   "EventTypes": [
+       "StatusChange",
+       "ResourceUpdated",
+       "ResourceAdded",
+       "ResourceRemoved",
+       "Alert"
+   ],
+   "HttpHeaders": {
+       "Content-Type": "Application/JSON",
+       "OData-Version": "4.0"
+   },
+   "Context": "Public",
+   "Oem": {
+       "Hpe": {
+           "DeliveryRetryIntervalInSeconds": 30,
+           "RequestedMaxEventsToQueue": 20,
+           "DeliveryRetryAttempts": 5,
+           "RetireOldEventInMinutes": 10
+       }
+    }
+}
