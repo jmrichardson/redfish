@@ -1,6 +1,10 @@
-### Install
+### Installation
 
-    # Install redfish repo	
+    # (Optional) Create clean python 3.6 environment
+    conda create --name redfish python=3.6
+    conda activate redfish 
+    
+    # Install
 	git clone https://github.com/jmrichardson/redfish
 	cd redfish
 	pip install -r requirements.txt
@@ -8,12 +12,11 @@
 ### Update config.py
     
     # Provide url, id and password
-    cd rf
-    vi config.py
+    vi rf/config.py
         iLO_https_url = "https://x.x.x.x" 
         iLO_account = "id"
         iLO_password = "pass"
-        
+       
         
 ### Examples
 
@@ -22,9 +25,7 @@
 
 #### List Assets
 
-    cd ..
     python assets.py
-
 
 #### Update firmware
 
@@ -43,8 +44,7 @@
     cd listener
     python RedfishEventListener_v1.py
 
-    # Update "Destination" field to listener IP address
-    cd ..
+    # In new window, update "Destination" field to listener IP address (your ip)
     vi json/subscription.json
     
     # Subscribe 

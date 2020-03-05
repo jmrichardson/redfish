@@ -1,4 +1,4 @@
-python-ilorest-library==2.5.2
+python-ilorest-library==3.0.0
 docopt
 loguru
 dpath
