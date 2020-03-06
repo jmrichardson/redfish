@@ -9,7 +9,7 @@
 	cd redfish
 	pip install -r requirements.txt
 	
-	# Windows requisites(C++ build tools)
+	# Windows (C++ build tools)
 	https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16
 
 ### Update config.py
