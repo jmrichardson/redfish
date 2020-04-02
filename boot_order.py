@@ -1,6 +1,6 @@
 from rf.rf import rf
 
-# Device to move to fron
+# Device to move to the front
 device = 'Usb'
 
 # Get current boot order
