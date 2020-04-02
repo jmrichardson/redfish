@@ -70,7 +70,7 @@
    
 #### Change boot order
 
-    # Update device to bring to from of boot order.  Options are 'Usb', 'Cd', 'EmbeddedStorage', 'PcieSlotStorage', 'EmbeddedFlexLOM', 'PcieSlotNic', 'UefiShell'
+    # Update device to bring to from of boot order.  Options include 'Usb', 'Cd', 'EmbeddedStorage', 'PcieSlotStorage', 'EmbeddedFlexLOM', 'PcieSlotNic', 'UefiShell'
     vi boot_order.py
     # device = 'Usb'
     
