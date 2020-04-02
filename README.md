@@ -67,5 +67,13 @@
 
     python drive_thermal.py
    
+   
+#### Change boot order
+
+> Update the device to bring to the front of boot order in boot_order.py
+> device = 'Usb'
+> Options -> 'Usb', 'Cd', 'EmbeddedStorage', 'PcieSlotStorage', 'EmbeddedFlexLOM', 'PcieSlotNic', 'UefiShell'
+
+    python boot_order.py
     
 

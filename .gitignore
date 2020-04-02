@@ -2,5 +2,4 @@
 *.log
 *.pyc
 *.idea
-firmware/*
 rf/config.py
