@@ -70,8 +70,9 @@
    
 #### Change boot order
 
-    # Update the device to bring to the front of boot order in boot_order.py
+    # Update device to bring to from of boot order.  Options are 'Usb', 'Cd', 'EmbeddedStorage', 'PcieSlotStorage', 'EmbeddedFlexLOM', 'PcieSlotNic', 'UefiShell'
+    vi boot_order.py
     # device = 'Usb'
-    # Options -> 'Usb', 'Cd', 'EmbeddedStorage', 'PcieSlotStorage', 'EmbeddedFlexLOM', 'PcieSlotNic', 'UefiShell'
+    
     python boot_order.py
     
