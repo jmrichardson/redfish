@@ -1,8 +1,9 @@
 import json
+import sys
 from rf.rf import rf
 
 # Setup POST
-sid=113
+sid=sys.argv[1]
 url = "/redfish/v1/EventService/Subscriptions" + "/" + str(sid)
 headers = {'Content-Type': 'application/json'}
 

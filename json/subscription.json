@@ -1,10 +1,6 @@
 {
-   "Destination": "https://16.214.192.48/RedfishEvents",
+   "Destination": "https://16.214.129.129:5000/",
    "EventTypes": [
-       "StatusChange",
-       "ResourceUpdated",
-       "ResourceAdded",
-       "ResourceRemoved",
        "Alert"
    ],
    "HttpHeaders": {
@@ -15,9 +11,9 @@
    "Oem": {
        "Hpe": {
            "DeliveryRetryIntervalInSeconds": 30,
-           "RequestedMaxEventsToQueue": 20,
-           "DeliveryRetryAttempts": 5,
-           "RetireOldEventInMinutes": 10
+           "DeliveryRetryAttempts": 5760,
+           "RetireOldEventInMinutes": 2880,
+           "RequestedMaxEventsToQueue": 20
        }
     }
 }

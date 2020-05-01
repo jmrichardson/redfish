@@ -4,9 +4,7 @@
             "EventType": "Alert",
             "Message": "Test Event",
             "MessageArgs": [
-                "NoAMS",
-                "Busy",
-                "Cached"
+                "Someone pulled the plug"
             ],
             "MessageId": "iLOEvents.2.1.ServerPoweredOff",
             "OriginOfCondition": "/redfish/v1/Systems/1/",
